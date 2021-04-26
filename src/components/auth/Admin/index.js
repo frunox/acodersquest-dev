@@ -24,6 +24,8 @@ function Admin() {
   const selectedFileHandler = (event) => {
     setMessage('');
     setPostContent('');
+    setImageName([]);
+    setUrlsArray([]);
     console.log('selectedFileHandler: ', event.target.files[0].name);
     let rawFile = event.target.files[0];
     let reader = new FileReader();
@@ -40,6 +42,7 @@ function Admin() {
 
   const selectedImageHandler = (event) => {
     setMessage('');
+
     // console.log('selectedImageHandler: ', event.target.files[0].name);
     let rawFile = event.target.files[0];
     // console.log('raw image file', rawFile);

@@ -29,17 +29,20 @@ A trick I picked up is to add metadata to the files. Put _---_ on the first line
 postUid: postUid1
 postId: 1
 title: Post Title
+slug: slugified-post-title
 date:  April 1, 2021
 author: Whoever
 summary: Write an attention-getting summary here...
 keywords: markdown parse-md react-markdown firestore
 filename: filename.md
+imageName: []
+imageUrl: []
 ---
 ## Start the Content Here
 ...
 ```
 
-The _title_, _date_, _author_ and _filename_ lines are standard metadata. The _postId_ is used to sort an array of all the posts in descending order so the most recent post is at the top. The _keywords_ are used to search for posts from the entire list. I'll explain _postUid_ and get into the code in a future post.
+The _title_, _date_, _author_ and _filename_ lines are standard metadata. The _postId_ is used to sort an array of all the posts in descending order so the most recent post is at the top. The _keywords_ are used to search for posts from the entire list. I'll explain _postUid_, _imageName_ and _imageUrl_ when I get into the code in a future post.
 
 This format is known a _YAML Front Matter_. There seem to be some advanced packages for working with it, but _parse\-.md_ is simple, and that's where I'm at now.
 
