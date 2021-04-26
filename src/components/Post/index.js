@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { usePosts } from '../../contexts/PostContext';
@@ -46,7 +45,7 @@ function Post(props) {
   return (
     <React.Fragment>
       <HomeNav />
-      {/* {isLoading && 'Loading...'} */}(
+      {/* {isLoading && 'Loading...'} */}
       <div className="post-content">
         <h1>{postArray[id].title}</h1>
         {/* <h3>Author: {postArray[id].author}</h3> */}
@@ -60,7 +59,6 @@ function Post(props) {
           <a href="mailto:john@acodersquest.com">john@acodersquest.com</a>
         </p>
       </div>
-      )
     </React.Fragment>
   );
 }
