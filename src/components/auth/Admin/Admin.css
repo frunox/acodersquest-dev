@@ -1,0 +1,100 @@
+.admin-content {
+  z-index: 10;
+  position: relative;
+  top: 60px;
+  width: 90%;
+  margin: auto;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.col-1 {
+  grid-column: 1 / 2;
+}
+
+.col-2 {
+  grid-column: 2 / 3;
+}
+
+.admin-title {
+  text-align: center;
+}
+
+.admin-content h3 {
+  font-weight: 400;
+}
+
+.admin-column-title {
+  font-size: 1.5rem;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.admin-content input {
+  background-color: lightgreen;
+}
+
+.admin-content button {
+  background-color: lightblue;
+  font-weight: 400;
+}
+
+.admin-post-content {
+  margin-left: 6px;
+}
+
+.admin-post-content h1 {
+  font-size: 1.5em;
+  font-weight: normal;
+  padding-top: 10px;
+}
+
+.admin-post-content h2 {
+  font-size: 1.1em;
+  font-weight: 600;
+  text-decoration: underline;
+  text-align: left;
+}
+
+.admin-post-content hr {
+  margin-bottom: 18px;
+  color: blue;
+}
+
+.post-content p {
+  margin-bottom: 0.5rem;
+}
+
+.admin-post-content img {
+  width: 80%;
+  height: auto;
+  padding: 0 10%;
+  margin-top: 10px auto;
+  border-radius: 10px;
+}
+
+.admin-post-content code {
+  padding: 0 2px;
+  background-color: rgb(186, 203, 235);
+}
+
+.admin-post-content pre {
+  margin: 0.5rem 1em;
+  padding: 8px;
+  background-color: rgb(186, 203, 235);
+  overflow-x: scroll;
+}
+
+.admin-post-content blockquote {
+  margin-right: 2em;
+  margin-left: 2em;
+  margin-bottom: 1em;
+  background-color: rgba(255, 208, 0, 0.5);
+  border-radius: 5px;
+  padding: 0.5em 1em 0.2em 1em;
+  font-size: 1.1em;
+}

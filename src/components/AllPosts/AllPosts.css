@@ -1,0 +1,12 @@
+.all-posts-content {
+  z-index: 10;
+  position: relative;
+  top: 60px;
+  width: 70%;
+  margin: auto;
+}
+.postlist {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}

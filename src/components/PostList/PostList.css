@@ -1,0 +1,23 @@
+.postlist {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.post-card-fixed,
+.post-card {
+  text-align: left;
+  margin-bottom: 1em;
+  padding: 8px;
+  border: 1px solid white;
+}
+
+.post-card:hover {
+  border-color: darkgray;
+  box-shadow: 4px 4px 4px 4px darkgray, 4px 4px 4px 4px white;
+}
+
+.click {
+  font-style: italic;
+  color: blue;
+}
