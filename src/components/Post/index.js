@@ -55,8 +55,9 @@ function Post(props) {
           {postArray[id].content}
         </ReactMarkdown>
         <p>
-          Send comments or suggestions for future posts to <span> </span>
-          <a href="mailto:john@acodersquest.com">john@acodersquest.com</a>
+          Thank you for reading my blog. Please send comments or suggestions for
+          future posts to <span> </span>
+          <a href="mailto:john@acodersquest.com">john@acodersquest.com.</a>
         </p>
       </div>
     </React.Fragment>
