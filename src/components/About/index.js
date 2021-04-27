@@ -6,7 +6,7 @@ function About() {
   let content = `  
   # Creating the Blog
   
-  It started with _create-react-app_ and went from there. I decided to use Firebase as the back end because I want to learn and use cloud services, and, well, it's pretty simple to use. I worked with AWS for a while, but it's not a straightforward as Firebase.  And, the free tier is more lenient.
+  It started with _create-react-app_ and went from there. I decided to use Firebase as the back end because I want to learn and use cloud services, and, well, it's pretty simple to use. I worked with AWS for a while, but it's not as straightforward as Firebase.  And, the free tier is more lenient.
 
   Firebase provides the server, an authentication service, a database (I'm using Firestore) and cloud storage for files and images.  Learn more about Firebase [here](https://firebase.google.com).
 
