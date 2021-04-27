@@ -1,7 +1,7 @@
 ---
 postUid: postUid12
 postId: 12
-title: Launch Day! And, Houston, We Have Some Problems
+title: Launch Day! (Houston, We Still Have Some Problems)
 slug: acq-launch-day
 date: April 27, 2021
 author: john@acodersquest.com
@@ -16,7 +16,7 @@ imageName: []
 
 Today I announced my blog on LinkedIn. I hope I get a more visitors than the 2 or 3 people who have seen it before this.
 
-I put the blog up on my domain several days ago. As expected, there were some things to that needed work before it went public, as discussed in [this post](https://acodersquest.com/post/acq-time-waster-setting-opacity) and [this post](https://acodersquest.com/post/acq-time-waster-setting-opacity). Discussing issues like these are a big part of what the blog is about. My coding skills are still pretty 'beginner-ish', so I don't dispense expert advise, but lessons-learned. I provide links to sources I use to research and correct problems I encounter.
+I put the blog up on my domain several days ago. As expected, there were some things to that needed work before it went public, as discussed in [this post](https://acodersquest.com/post/acq-time-waster-setting-opacity) and [this post](https://acodersquest.com/post/acq-time-waster-setting-opacity). Discussing issues like these are a big part of what the blog is about. My coding skills are still pretty 'beginner-ish', so I don't dispense expert advise, but lessons-learned. I provide links to sources I use to research and correct problems I encounter. There are still some improvements to the look and functionality to be addressed.
 
 The content focuses mostly on the technologies I'm using now, like JavaScript, HTML, CSS, React and various databases, along with using Markdown to provide the content. Since the blog is hosted on Firebase, there will be a focus on that platform and it's products, like the Firestore database and Cloud Storage. I plan to move on to a different project soon, so the focus might shift, depending on what resources I end up using.
 

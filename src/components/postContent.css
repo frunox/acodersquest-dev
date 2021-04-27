@@ -34,9 +34,11 @@
 }
 
 .post-content img {
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: auto;
-  padding: 0 10%;
+  padding: 0 15%;
   margin-top: 20px;
   border-radius: 25px;
 }
