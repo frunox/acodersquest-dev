@@ -14,9 +14,9 @@ imageName: []
 
 ![chain links]()
 
-I had one of those days where the code flowed steadily. The goal was to improve how the Markdown files are processed and saved. In particular, I wanted to create a way to insert the URLs for any image files into the Markdown.
+I had one of those days where the code flowed steadily. The goal was to improve how the Markdown files are processed and saved. In particular, I wanted to create a way to insert the URLs for any image files into the posts automatically.
 
-Previously, the URLs were being saved into each Firestore document and I was copy/pasting them into the Markdown files. Realizing that I was already converting each file into an array of strings to `splice()` the lines of metadata out of the content, I thought there was a way to work with the array to insert each image URL in the correct location.
+Previously, the URLs were being acquired as each image was put into Cloud Storage, I was copy/pasting them into the Markdown files. See the code in the [original post](http://localhost:3000/post/acq-building-the-blog-working-with-markdown). Realizing that I was already converting the content of each post into an array of strings with `splice()`, I thought there was a way to work with the array to insert each image URL in the correct location.
 
 ## Reorganizing How Images are Imported and the URLs Stored
 
@@ -123,7 +123,6 @@ const selectedFileHandler = (event) => {
   reader.readAsText(rawFile);
   reader.onload = function () {
     let file = reader.result;
-    // console.log('text: ', text)
     setMarkdownFile(file);
   };
   reader.onerror = function () {
@@ -161,7 +160,7 @@ const parseHandler = () => {
 };
 ```
 
-Again, the package _parse-md_ is used to grab the lines at the top of the file between lines of `---` and puts them into a metadata object. I changed the metadata format to be:
+Again, the `parse-md_` package is used to read the lines at the top of the file between lines of `---` and puts them into a metadata object. I changed the metadata format to be:
 
 ```js
 ---
@@ -182,9 +181,9 @@ The `imageUrl` and `imageName` fields were added as empty arrays. These will be 
 
 The metadata is stored in `mData` as an object, but the content, a string which still includes the lines of metadata, still needs work.
 
-Next, `linesArray`, an array of strings in which every element is one line of the Markdown file, is created from the `content` using `.split('\n')`, then the metadata is removed with `linesArray.splice(0, 12)`.
+Next, `linesArray`, an array of strings in which every element is one line of the Markdown file, is created from the `content` using `.split('\n')`. Then the metadata is removed with `linesArray.splice(0, 12)`.
 
-Now, the `imageIndex` array is initialized. I iterate through `linesArray` to find the index of each line that starts with an exclamation point. The Markdown format for image links is `![alt text](image-url)`, so this is how the lines that have the links are located and those indexes are pushed to `imageIndex`. What I write in the Markdown file is `![alt text]()`. The image URL is inserted later.
+Now, the `imageIndex` array is initialized. I iterate through `linesArray` to find the index of each line the hold an image URL. The Markdown format for image links is `![alt text](image-url)`, so the index of every line that starts with an exclamation point is found in the `for` loop and pushed to `imageIndex`. What I write in the Markdown file is `![alt text]()`.
 
 I set variables to show which image is to be selected (such as _"Select Image 1 of 2"_), and also save `imageIndex`, and finally `linesArray` is converted back into a string and stored in `postContent`, which now renders in the preview pane, minus the images.
 
@@ -192,7 +191,7 @@ Now the page looks like:
 
 ![acodersquest admin first preview]()
 
-The file, minus the images, is previewed. The Markdown image element just displays the _alt text_.
+The Markdown image element just displays the _alt text_ at this point.
 
 ## Selecting the Images and Storing the URLs
 
@@ -238,9 +237,9 @@ const imageStorageHandler = async (event) => {
 };
 ```
 
-Cloud Storage stores files in 'buckets', so `bucketName` identifies the bucket I'm using. `selectedImage` is the image file. `urls` is an array of image URLs, if any, and `name` is an array of any image file names. The name of the image file is pushed to `names` and set to a state variable `imageName`.
+Cloud Storage stores files in 'buckets', so `bucketName` identifies the bucket I'm using. `selectedImage` is the image file. `urls` is an array of image URLs, if any, and `name` is an array of any image file names, which were initialized in the metadata. The name of the image file is pushed to `names` and set to a state variable `imageName`.
 
-Now comes the setup to store the image file. Firebase wants a `ref`, which which service is being used. Here, `add.storage()` refers to Cloud Storage, with the bucket and file names provided as arguments. THen, the `.put()` method is used to store the file. It overwrites an existing file of the same name so there are no duplicates.
+Now comes the setup to store the image file. Firebase wants a `ref`, which identifies the service is being used. Here, `app.storage()` refers to Cloud Storage, with the bucket and file names provided as arguments. Then, the `.put()` method is used to store the file. It overwrites an existing file of the same name so there are no duplicates.
 
 Next, the `.getDownloadURL()` method is used to get the URL, which is saved in `imageFileUrl` and pushed to the `urls` array and saved into another state variable. Then the metadata stored in state (`mData`) is updated with the arrays of image URLs and file names.
 
@@ -260,7 +259,7 @@ const addLinksHandler = () => {
 };
 ```
 
-Here, a new `linesArray`, not including the metadata, is `.split('\n')` from `postContent`. The array of lines of text is iterated to find the line for each image in the post using it's index, and a `newline` is created using `.replace()`, inserting the appropriate URL.
+Here, a new `linesArray`, not including the metadata, is `.split('\n')` from `postContent`. The `for` loop locates the lines for each image in the post using it's index, and a `newline` is created using `.replace()`, inserting the appropriate URL.
 
 When this is done, the preview updates to include any images:
 
@@ -299,7 +298,7 @@ A `postObject` is created to hold the current metadata, and then the content, in
 
 ## Summary
 
-Re-factoring the process of turning Markdown files into posts seemed daunting at first, but I'm happy how it turned. I'm sure the code can still be improved - maybe I'll try that later.
+Re-factoring the process of turning Markdown files into posts seemed daunting at first, but I'm happy how it turned out. I'm sure the code can still be improved - maybe I'll try that later.
 
 Now I can add images to the posts without copying and pasting the URLs, which is a nice improvement.
 

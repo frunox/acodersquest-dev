@@ -4,7 +4,7 @@ postId: 4
 title: Building the Blog - Working with Markdown
 slug: acq-building-the-blog-working-with-markdown
 date: April 13, 2021
-author: lonesome-coder
+author: john@acodersquest.com
 summary: Let's look at the code to see how Markdown files are processed and rendered...
 keywords: markdown parse-md react-markdown firestore
 filename: 04_CB-building-the-blog.md
@@ -14,9 +14,9 @@ imageName: []
 
 ![javascript code]()
 
-In an earlier post, I discussed why use Markdown to create the posts, how to include metadata, and tools to parse the metadata and render the content to the browser.
+In an earlier [post](http://localhost:3000/post/acq-markdown-not-a-sales-pitch), I discussed why I use Markdown to create the posts. Now I'll show how to read in the post files, including metadata, and use some tools to parse the metadata and render the content to the browser.
 
-Now, let's look at the code to see how I take the Markdown files and work with them.
+(NOTE: This post has been [updated](https://acodersquest.com/post/acq-building-the-blog-more-on-markdown) to show an improved method of processing the Markdown files. The concepts shown below are still used.)
 
 ## Loading a Markdown File in React
 
@@ -46,7 +46,7 @@ function Admin() {
   }
 ```
 
-The variable `rawFile` stores the selected file. A new `reader` object is created, and the `FileReader` method `readAsText` reads in the file as a string. The `onload` method calls `reader.result` which loads the string into `file`, which is copied into the state variable `markdownFile`. This holds the entire \*.md file, including the metadata.
+The variable `rawFile` stores the selected file. A new `reader` object is created, and the `FileReader` method `readAsText()` reads in the file as a string. The `onload` method calls `reader.result` which loads the string into `file`, which is copied into the state variable `markdownFile`. This holds the entire \*.md file, including the metadata.
 
 ## Parsing the Metadata
 
@@ -91,11 +91,11 @@ const postStoreHandler = () => {
 };
 ```
 
-The metadata is assign to `postObject`, and the content is add as another field. All the data is in string format.
+The metadata is assigned to `postObject`, and the content is added as another field. All the data is in string format.
 
 Now the `postUid` in the metadata comes into play. By default, Firestore assigns a random `uid` to each document (or record). It allows you to create your own `uid`, however, as long as it is unique. Using a custom `uid` makes it easier to identify each post in the Firestore dashboard, and, more importantly, allows Firebase update existing posts.
 
-Firestore uses a `ref` to point to the collection and document being manipulated. The `postUid` is applied in the `.doc()` method. The data object is stored using the `.set()`method. If no custom`uid`is assigned, or if theres is no existing document with that `uid`, a new document is created. If a document with the `uid` exists, then it is updated, so if I revise a post, I don't end up with duplicate documents.
+Firestore uses a `ref` to point to the collection and document being manipulated. The `postUid` is applied in the `.doc()` method. The data object is stored using the `.set()`method. If no custom`uid`is assigned, or if there is no existing document with that `uid`, a new document is created. If a document with the `uid` exists, then it is updated, so if I revise a post, I don't end up with duplicate documents.
 
 ## Retrieving the Posts
 
@@ -116,9 +116,9 @@ useEffect(() => {
 
 The Firestore `.get()` method returns a _QuerySnapshot_ object, which contains a _DocumentSnapshot_ for each document returned. The `.map()` method is used to create an array of objects, each of which contains the object with the metadata and content for that post.
 
-The, the array of posts is sorted in descending order using the `postId`, a numeric value included in the metadata. This way, the posts are rendered starting with the most recent.
+Next, the array of posts is sorted in descending order using the `postId`, a numeric value included in the metadata. This way, the posts are rendered starting with the most recent.
 
-I created a context (_PostContext_) and store the sorted posts array there using `savePosts(posts)`. Now, the array can be accessed from any component. I used it for the Home and Posts pages.
+I created a context (_PostContext_) and store the sorted posts array there using `savePosts(posts)`. Now, the array can be accessed from any component. It is used for the Home and Posts pages, and to render each individual post.
 
 > _“One child, one teacher, one book, one pen can change the world.”_
 >
@@ -138,7 +138,7 @@ This creates a custom component that wraps the Markdown content.
 
 First, the array of posts is grabbed from _PostContext_. There are different ways to configure contexts, so the particular code I use to retrieve the array may not look familiar. Maybe this is a topic for another post (filled with links to videos to show how it's done).
 
-Anyway, I call the array `postArray` now. It is then rendered out using `.map()` like any array to create a list. This is the code from the AllPosts page, which shows every post:
+Anyway, I call the array `postArray` now. It is then rendered out using `.map()` like any array to create a list. This is the code from the 'Posts' page, which shows every post:
 
 ```js
 postArray.map((post, i) => {
@@ -168,4 +168,4 @@ On the page that shows the content, the `<ReactMarkdown>` component is used like
 
 The `linkTarget` prop inserts the `target="_blank_"` attribute into any _<a>_ tags to open links in a new tab, which is a preference of mine.
 
-So that's how it's done. I simplified the code a little here, since I do some processing of the `postArray` in different components. See the code on [GitHub](https://github.com/frunox/The-Lonesome-Coder).
+So that's how it's done. I simplified the code a little here, since I do some processing of the `postArray` in different components. See the code on [GitHub](https://github.com/frunox/acodersquest-dev).

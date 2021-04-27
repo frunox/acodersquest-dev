@@ -37,15 +37,10 @@ function Post(props) {
   }
   let id = postArray.findIndex(findPostId);
   console.log('POST id after sort: ', id);
-  // const maxValidId = postArray[0].postId;
-  // console.log('maxValidId', maxValidId);
-
-  // let postRef = app.storage().ref.child('markdown')
 
   return (
     <React.Fragment>
       <HomeNav />
-      {/* {isLoading && 'Loading...'} */}
       <div className="post-content">
         <h1>{postArray[id].title}</h1>
         {/* <h3>Author: {postArray[id].author}</h3> */}

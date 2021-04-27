@@ -1,66 +1,56 @@
-import React, { useRef, useState } from "react";
-import { useAuth } from "../../../contexts/AuthContext"
-import { useModal } from "../../../contexts/ModalContext"
-import { useHistory, Link } from "react-router-dom";
-import ErrorModal from '../../ErrorModal/ErrorModal'
-import './Signup.css'
+import React, { useRef, useState } from 'react';
+import { useAuth } from '../../../contexts/AuthContext';
+import { useModal } from '../../../contexts/ModalContext';
+import { useHistory, Link } from 'react-router-dom';
+import ErrorModal from '../../ErrorModal/ErrorModal';
+import './Signup.css';
 
 const Signup = () => {
   // const displaynameRef = useRef()
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const passwordConfirmRef = useRef()
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
 
-  const { signup } = useAuth()
-  const { openErrorModal, errorMessageHandler } = useModal()
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const history = useHistory()
+  const { signup } = useAuth();
+  const { openErrorModal, errorMessageHandler } = useModal();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      let message = "Passwords do not match"
-      errorMessageHandler(message)
-      openErrorModal(true)
-      return setError(message)
+      let message = 'Passwords do not match';
+      errorMessageHandler(message);
+      openErrorModal(true);
+      return setError(message);
     }
 
     // the loading state is set to disable the button so only 1 account is created
     try {
-      setError("")
-      setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      setError('');
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+      history.push('/');
     } catch {
-      let message = "Failed to create an account"
-      setError(message)
-      errorMessageHandler(message)
-      openErrorModal(true)
+      let message = 'Failed to create an account';
+      setError(message);
+      errorMessageHandler(message);
+      openErrorModal(true);
     }
 
-    setLoading(false)
+    setLoading(false);
   }
 
   return (
     <div>
-      <div className='wrapper'>
-        <div className='form-wrapper'>
+      <div className="wrapper">
+        <div className="form-wrapper">
           {error && <ErrorModal />}
-          <div className='login-form-outline'>
+          <div className="login-form-outline">
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
-              {/* <div className="display-name">
-              <label htmlFor="displayName">Display Name</label>
-              <input
-                ref={displaynameRef}
-                placeholder="display name"
-                type="text"
-                name="displayName"
-                required
-              />
-            </div> */}
               <div className="email">
                 <label htmlFor="email">Email</label>
                 <input
@@ -94,7 +84,9 @@ const Signup = () => {
                 />
               </div>
               <div className="createAccount">
-                <button disabled={loading} type="submit">Sign Up</button>
+                <button disabled={loading} type="submit">
+                  Sign Up
+                </button>
               </div>
             </form>
           </div>
@@ -105,6 +97,6 @@ const Signup = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Signup;

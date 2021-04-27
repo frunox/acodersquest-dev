@@ -35,9 +35,9 @@ I used the React hook `useEffect`, which should be used for any 'side effect', l
 
 ## The Problem
 
-This worked to create an array stored in context that held all the posts and is accessible by any component that needs to render one or most posts, pretty important in a blog app! This worked fine in the Home page and Posts page components. However, there was a problem with when a post was selected. The individual post was displayed as expected, but, if the page was refreshed, or the post was accessed via a link, an error occurred saying that "postArray.title is not defined", or something similar. In these cases, the array of posts was empty.
+With the array stored in context, it's accessible by any component that needs to render a list of posts, like on the Home or Posts pages (pretty important in a blog app!). However, there was a problem with when a post was selected. The individual post was displayed as expected, but, if the page was refreshed, or the post was accessed via a link, an error occurred saying that "postArray.title is not defined", or something similar. In these cases, the array of posts was empty.
 
-The issue is the operation to retrieve the posts is asynchronous. It takes time to reach out to Firestore and have it return the results of a query. Meanwhile, JavaScript keeps on executing. The result is that React tries to render the page before the Firestore responds and the array of posts is created and stored in context, so the array is in it's initial state, which is empty. Since the title of the post is the first property from the array that is rendered, that's where the error was thrown.
+The issue is that the operation to retrieve the posts is asynchronous. It takes time to reach out to Firestore and have it return the results of a query. Meanwhile, JavaScript keeps on executing. The result is that React tries to render the page before Firestore responds and the array of posts is created and stored in context, so the array is in it's initial state, which is empty. Since the title of the post is the first property from the array that is rendered, that's where the error was thrown.
 
 ![dolphins jumping in sync]()
 
@@ -65,7 +65,7 @@ useEffect(() => {
 }, [isLoading]);
 ```
 
-The `getPosts` function inside of `useEffect()` is defined as `async`, and `await` is used on the Firestore `.get()` method, which is the asynchronous operation. Now, the array is populated with the posts when an individual post page is refreshed or accessed via a link.
+The `getPosts` function inside of `useEffect()` is defined as `async`, and `await` is used on the Firestore `.get()` method, which is the asynchronous operation. Now, the array is populated when an individual post page is refreshed or accessed via a link.
 
 ![warning sign]()
 

@@ -18,9 +18,9 @@ Bootstrap is one of the first tools I learned to use at boot camp. It seemed eas
 
 I moved on to Semantic-UI and Semantic-UI-React, which are simpler, but there were still issues. They aren't as well documented, and are more limited. And customized the look was still problematic.
 
-> _"Get your boots and stick your toes in. Grab the bootstraps and pull real hard. Is your life better now?"_
+> _"Be yourself. Everyone else is already taken."_
 >
-> Me
+> Oscar Wilde
 
 ## Back to CSS
 
@@ -36,11 +36,11 @@ Two important CSS concepts to learn are grid and flexbox. Both are used to posit
 
 There are lots of good sources for learning about CSS. Along with the two cited above, check out [Kevin Powell](https://www.youtube.com/channel/UCJZv4d5rbIKd4QHMPkcABCw). His entire focus is on CSS and front end design.
 
-Don't be put off by any titled "Grid versus Flexbox". These are not two competing concepts, but are complementary, and are frequently used together. It is very common to layout a grid and to use flexbox to position elements with each grid cell.
+Don't be put off by any "Grid versus Flexbox" videos or articles. These are not two competing concepts, but are complementary, and are frequently used together. It is very common to layout a grid and to use flexbox to position elements in grid cells.
 
 ## CSS Variables
 
-Another concept I'm trying to incorporate into my projects are CSS variables, also known as custom properties. They allow you to set a particular property, line background color, as a variable. If that property with that value is used in many places in your CSS, you set them all to the variable name. That way, if you need to change the value in all the places where it is used, you only change the value of the variable. It's similar to using variables in JavaScript. Get a better explanation at [blob.hubspot.com](https://blog.hubspot.com/website/css-variables), [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), or this first of a series of videos by [Kevin Powell](https://www.youtube.com/watch?v=PHO6TBq_auI).
+Another concept I'm trying to incorporate into my projects are CSS variables, also known as custom properties. They allow you to set a particular property, like background color, as a variable. If that property with that value is used in many places in your CSS, you set them all to the variable name. That way, if you need to change the value in all the places where it is used, you only change the value of the variable. It's similar to using variables in JavaScript. Get a better explanation at [blob.hubspot.com](https://blog.hubspot.com/website/css-variables), [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), or this first of a series of videos by [Kevin Powell](https://www.youtube.com/watch?v=PHO6TBq_auI).
 
 The values of CSS variables can even be [changed in JavaScript](https://www.youtube.com/watch?v=cZ0yt67A7OM), something I haven't tried yet.
 

@@ -48,10 +48,10 @@ This format is known a _YAML Front Matter_. There seem to be some advanced packa
 
 ## Markdown to JSX
 
-After a Markdown file is read into the React code, it needs to be converted to JSX so it can be rendered. There are several package that do this, including [_remark_](https://www.npmjs.com/package/marked) and [_markdown-to-jsx_](https://www.npmjs.com/package/markdown-to-jsx), among others.
+After a Markdown file is read into the React code, it needs to be converted to JSX so it can be rendered. There are several packages that do this, including [_remark_](https://www.npmjs.com/package/marked) and [_markdown-to-jsx_](https://www.npmjs.com/package/markdown-to-jsx), among others.
 
 I'm using [_react-markdown_](https://www.npmjs.com/package/react-markdown) because, as is usual for me, it's pretty easy to use. It's also popular and well documented, good signs that it is actively supported.
 
-What is does is create a custom React component the you wrap the Markdown content in. It translates the Markdown formatting to JSX. For example, a top Markdown heading (#) is translated to a `<h1>` tag, or a paragraph of text is wrapped in a `<p>` tag. You can add your on styling from there.
+What it does is create a custom React component the you wrap the Markdown content in. It translates the Markdown formatting to JSX. For example, a top Markdown heading (#) is translated to a `<h1>` tag, or a paragraph of text is wrapped in a `<p>` tag. You can add your own styling from there.
 
 Creating content in Markdown speeds up the process. Since it is rendered in common HTML tags, styling is straightforward. Yep, it's the way to go.

@@ -18,8 +18,6 @@ function AllPosts() {
 
   const handleChange = (e) => {
     e.preventDefault();
-    // const { name, value } = e.target;
-    // console.log('handleChange', name, value);
     localStorage.setItem('searchString', e.target.value);
     setState({ searchbox: e.target.value });
   };
@@ -31,7 +29,6 @@ function AllPosts() {
     let searchString = localStorage.getItem('searchString');
     console.log('searchString', searchString);
     for (let i = 0; i < postArray.length; i++) {
-      // console.log('in loop')
       if (
         postArray[i].keywords
           .toLowerCase()
@@ -105,10 +102,10 @@ function AllPosts() {
           className="allposts-keyword"
           type="text"
           name="searchbox"
-          value="javascript"
+          value="markdown"
           onClick={handleChange}
         >
-          JavaScript
+          Markdown
         </button>
         <button
           className="allposts-keyword"

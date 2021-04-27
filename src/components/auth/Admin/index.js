@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import app from '../../../firebase';
 import ReactMarkdown from 'react-markdown';
-// import gfm from 'remark-gfm'
-// import Markdown from 'markdown-to-jsx'
 import './Admin.css';
 import '../../postContent.css';
 const parseMD = require('parse-md').default;
@@ -32,7 +30,6 @@ function Admin() {
     reader.readAsText(rawFile);
     reader.onload = function () {
       let file = reader.result;
-      // console.log('text: ', text)
       setMarkdownFile(file);
     };
     reader.onerror = function () {
@@ -43,9 +40,7 @@ function Admin() {
   const selectedImageHandler = (event) => {
     setMessage('');
 
-    // console.log('selectedImageHandler: ', event.target.files[0].name);
     let rawFile = event.target.files[0];
-    // console.log('raw image file', rawFile);
     setImageFile(rawFile);
   };
 
@@ -54,14 +49,12 @@ function Admin() {
     const { metadata, content } = parseMD(markdownFile);
     setMData(metadata);
     setPostContent(content);
-    // console.log('parseHandler: ', metadata);
     // remove metadata from .md file
     // split the post file into an array of lines
     const linesArray = markdownFile.split('\n');
     linesArray.splice(0, 12);
     let imageIndex = [];
     for (let i = 0; i < linesArray.length; i++) {
-      // console.log(linesArray[i]);
       if (linesArray[i][0] === '!') {
         imageIndex.push(i);
       }
@@ -73,7 +66,6 @@ function Admin() {
     }
     setImageIndices(imageIndex);
     let contentString = linesArray.join('\n');
-    // console.log('post string', contentString);
     setPostContent(contentString);
   };
 
@@ -81,8 +73,6 @@ function Admin() {
     setMessage('');
     let bucketName = 'images';
     let selectedImage = imageFile;
-    // console.log('imageStorageHandler image file', selectedImage);
-    // console.log('selectedFile ', selectedFile)
     let urls = urlsArray;
     let names = imageName;
     console.log('urls:', urlsArray, 'names:', imageName);
@@ -100,7 +90,6 @@ function Admin() {
     console.log('urls after push:', urls);
     setUrlsArray(urls);
     console.log('Image URL: ', imageFileUrl);
-    // console.log('mData', mData);
     setMData({ ...mData, imageUrl: urls, imageName: names });
     if (imageCount < numberOfImages) {
       setImageCount((prevImageCount) => prevImageCount + 1);
@@ -119,17 +108,14 @@ function Admin() {
       linesArray[imageIndices[i]] = newLine;
     }
     let contentString = linesArray.join('\n');
-    // console.log('post string', contentString);
     setPostContent(contentString);
   };
 
   const postStoreHandler = () => {
     setMessage('');
-    // console.log('postStoreHandler mData', mData);
     const postObject = mData;
     postObject.content = postContent;
     const storageRef = db.collection('metadata');
-    // console.log('storageRef', storageRef)
     storageRef
       .doc(postObject.postUid)
       .set(postObject)
@@ -168,7 +154,6 @@ function Admin() {
     const contentLinesArray = content.split('\n');
     let imageIndex = [];
     for (let i = 0; i < contentLinesArray.length; i++) {
-      // console.log(linesArray[i]);
       if (contentLinesArray[i][0] === '!') {
         imageIndex.push(i);
       }
@@ -184,7 +169,6 @@ function Admin() {
     let contentString = contentLinesArray.join('\n');
     metadata.content = contentString;
     const storageRef = db.collection('metadata');
-    // console.log('storageRef', storageRef)
     storageRef
       .doc(metadata.postUid)
       .set(metadata)
@@ -200,7 +184,6 @@ function Admin() {
     <>
       <div className="admin-content">
         <h2 className="admin-title">Admin Page</h2>
-        {/* <hr></hr> */}
         <div className="admin-grid">
           <div className="col-1">
             <p className="admin-column-title">Full Post Processing Sequence</p>

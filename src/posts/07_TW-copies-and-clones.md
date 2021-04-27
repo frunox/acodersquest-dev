@@ -54,13 +54,13 @@ Now three posts are rendered on the home page, and all the posts are rendered on
 
 What I had forgotten was that arrays (which are objects) are different from primitive data types. Primitives (numbers, strings, booleans, etc.) have a name and a value. When copied, the new name is associated with it's own value, which is equal to the value of the original primitive. But, when the value of the copy is changed, the value of the original remains unchanged.
 
-Objects (which includes arrays, sets, maps, dates, etc.) are 'structural' types. Unlike primitives, whose forms are built into JavaScript, we define the forms of objects we declare. The each have a name, but that name is associated with references (memory addresses) where the values are stored. When you copy an object using the assignment operator (=), a new name is created, but the references are the same as for the original object. When you change a value in either the original or the copy, the new value is reflected in both, since they both point to the same memory addresses.
+Objects (which includes arrays, sets, maps, dates, etc.) are 'structural' types. Unlike primitives, whose forms are built into JavaScript, we define the forms of objects we declare. Each has a name, but that name is associated with references (memory addresses) where the values are stored. When you copy an object using the assignment operator (=), a new name is created, but the references are the same as for the original object. When you change a value in either the original or the copy, the new value is reflected in both, since they both point to the same memory addresses.
 
-To create an entirely new object, with new references, you have to 'clone' the original. Then, changes in the value in the original or the copy are only reflected in that object, not both.
+To create an entirely new object, with new references, you have to 'clone' the original. Then, changes in the values in the original or the clone are only reflected in that object, not both.
 
 There are several ways to clone an object. There are both 'deep' and 'shallow' methods. Let's have an expert explain this better than I can
 [here](https://javascript.plainenglish.io/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089).
 
 ## Boy, Did I Get Lucky
 
-So, was using the spread operator the solution? Well, yes, but only because I'm lucky. I cloned 'posts' using a shallow copy method, which created new references for the elements of the array. But, it didn't create new references for the objects in the array. Fortunately for me, I won't be editing those objects, so a shallow copy works. Good practice would be to use a deep copy method.
+So, was using the spread operator the solution? Well, yes, but only because I'm lucky. I cloned `posts` using a shallow copy method, which created new references for the elements of the array. But, it didn't create new references for the objects in the array. Fortunately for me, I won't be editing those objects, so a shallow copy works. Good practice would be to use a deep copy method.
