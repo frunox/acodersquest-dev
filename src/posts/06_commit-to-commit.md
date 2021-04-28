@@ -22,4 +22,4 @@ Usually, when an error occurs, the message is helpful enough to make the solutio
 
 The solution of last resort is to `git stash` to revert the code back to the last commit. This works, but if it's been a long enough time, there might be a lot of working code to re-write.
 
-So remember to commit often. And create branches so if things really go wrong, you can dump the branch and return to your working code.
+So remember to commit often. And create branches, so if things really go wrong, you can dump the branch and return to your working code.

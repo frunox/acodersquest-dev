@@ -18,9 +18,9 @@ This is the first of a (unfortunately, pretty lengthy) series of posts about Tim
 
 ## Copying an Array - Good Intentions/Bad Consequences
 
-Early in development of this blog, I stored the metadata for the posts in Firestore. In the home page, I only want to render the 3 most recent posts. On the Posts page, I want to render all the posts. The home page uses a component that downloads the metadata for all the posts, which is in the form of an array of objects. The array is sorted in descending order (so the most recent post is rendered first) and is saved both to a state variable in the component, and to a context variable for access by the Posts page.
+Early in development of this blog, I stored the metadata for the posts in Firestore. In the Home page, I only want to render the 3 most recent posts. On the Posts page, I want to render all the posts. The Home page uses a component that downloads the metadata for all the posts, which is in the form of an array of objects. The array is sorted in descending order (so the most recent post is rendered first) and is saved both to a state variable in the component, and to a context variable for access by the Posts page.
 
-The component for the home page checks the length of the array (called 'posts') and uses the splice() method to remove all but the latest three posts.
+The component for the Home page checks the length of the array (called 'posts') and uses the splice() method to remove all but the latest three posts.
 
 ```js
 if (posts.length > 3) {
@@ -28,7 +28,7 @@ if (posts.length > 3) {
 }
 ```
 
-Wonderful! Now, if there are more than three posts, only the most recent three are shown on the home page. But, this changed the array saved in state, too, with the totally unexpected consequence that it changed the array that was stored in context, so only three posts rendered on the Posts page.
+Wonderful! Now, if there are more than three posts, only the most recent three are shown on the Home page. But, this changed the array saved in state, too, with the totally unexpected consequence that it changed the array that was stored in context, so only three posts rendered on the Posts page.
 
 My 'aha' moment arrived. Copy the posts array, and splice the copy!. That way, the original array won't be affected. Hence:
 
@@ -50,7 +50,7 @@ Somewhere in my research, buried in a StackOverflow post, was the word 'clone'. 
 let array = [...posts];
 ```
 
-Now three posts are rendered on the home page, and all the posts are rendered on the Posts page.
+Now three posts are rendered on the Home page, and all the posts are rendered on the Posts page.
 
 What I had forgotten was that arrays (which are objects) are different from primitive data types. Primitives (numbers, strings, booleans, etc.) have a name and a value. When copied, the new name is associated with it's own value, which is equal to the value of the original primitive. But, when the value of the copy is changed, the value of the original remains unchanged.
 
@@ -63,4 +63,4 @@ There are several ways to clone an object. There are both 'deep' and 'shallow' m
 
 ## Boy, Did I Get Lucky
 
-So, was using the spread operator the solution? Well, yes, but only because I'm lucky. I cloned `posts` using a shallow copy method, which created new references for the elements of the array. But, it didn't create new references for the objects in the array. Fortunately for me, I won't be editing those objects, so a shallow copy works. Good practice would be to use a deep copy method.
+So, was using the spread operator the solution? Well, yes, but only because I was lucky. I cloned `posts` using a shallow copy method, which created new references for the elements of the array. But, it didn't create new references for the objects in the array. Fortunately for me, I won't be editing those objects, so a shallow copy works. Good practice would be to use a deep copy method.

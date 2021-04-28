@@ -16,7 +16,7 @@ imageName: []
 
 Bootstrap is one of the first tools I learned to use at boot camp. It seemed easy at first. There were lots of styling options. But, when I wanted to customize the look, I ran into trouble. Modifying the default styling meant wading through some complex class selectors which often wouldn't accept new values. There was a lot of hit-and-miss regarding applying my own styling.
 
-I moved on to Semantic-UI and Semantic-UI-React, which are simpler, but there were still issues. They aren't as well documented, and are more limited. And customized the look was still problematic.
+I moved on to Semantic-UI and Semantic-UI-React, which are simpler, but there were still issues. They aren't as well documented, and are more limited. And customizing the look was still problematic.
 
 > _"Be yourself. Everyone else is already taken."_
 >
@@ -48,4 +48,4 @@ The values of CSS variables can even be [changed in JavaScript](https://www.yout
 
 CSS preprocessors, like SASS and LESS, compile CSS into a single file. They also 'extend' the functionality of CSS. In fact, one of the primary reasons they are used is to implement CSS variables. But, since CSS variables are now available in base CSS, there may be less need to use one.
 
-I don't intend to learn one of these now. I have more than enough to ingest trying to master CSS, so I don't have an opinion on them. There are supporters and detractors. I'll end with this [link](https://medium.com/codex/less-sass-scss-are-junk-too-bda0541251c2) to an article by someone who really, really doesn't line CSS preprocessors.
+I don't intend to learn one of these now. I have more than enough to ingest trying to master CSS, so I don't have an opinion on them. There are supporters and detractors. I'll end with this [link](https://medium.com/codex/less-sass-scss-are-junk-too-bda0541251c2) to an article by someone who really, really doesn't like CSS preprocessors.
