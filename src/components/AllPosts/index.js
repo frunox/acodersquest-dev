@@ -5,7 +5,6 @@ import { usePosts } from '../../contexts/PostContext';
 import '../components.css';
 
 function AllPosts() {
-  const [state, setState] = useState();
   const [renderArray, setRenderArray] = useState([]);
   let postArray = usePosts();
 
@@ -19,13 +18,11 @@ function AllPosts() {
   const handleChange = (e) => {
     e.preventDefault();
     localStorage.setItem('searchString', e.target.value);
-    setState({ searchbox: e.target.value });
   };
 
   const searchHandler = (e) => {
     e.preventDefault();
     searchArray = [];
-    console.log('in searchHandler', state);
     let searchString = localStorage.getItem('searchString');
     console.log('searchString', searchString);
     for (let i = 0; i < postArray.length; i++) {
