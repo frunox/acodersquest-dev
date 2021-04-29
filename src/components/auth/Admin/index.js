@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import app from '../../../firebase';
 import ReactMarkdown from 'react-markdown';
+import { usePosts } from '../../../contexts/PostContext';
 import './Admin.css';
 import '../../postContent.css';
 const parseMD = require('parse-md').default;
@@ -8,7 +9,7 @@ const parseMD = require('parse-md').default;
 const db = app.firestore();
 
 function Admin() {
-  const [mData, setMData] = useState('');
+  const [mData, setMData] = useState({});
   const [markdownFile, setMarkdownFile] = useState('');
   const [postContent, setPostContent] = useState('');
   const [imageFile, setImageFile] = useState('');
@@ -18,6 +19,8 @@ function Admin() {
   const [imageIndices, setImageIndices] = useState([]);
   const [imageCount, setImageCount] = useState(0);
   const [numberOfImages, setNumberOfImages] = useState(0);
+
+  const postArray = usePosts();
 
   const selectedFileHandler = (event) => {
     setMessage('');
@@ -132,52 +135,67 @@ function Admin() {
     setNumberOfImages(0);
   };
 
-  const updatePostTextHandler = async () => {
+  const updatePostTextHandler = () => {
     setMessage('');
     setPostContent('');
     const { metadata, content } = parseMD(markdownFile);
-    console.log('metadata postUid: ', metadata.postUid);
-    let docUid = metadata.postUid;
-    let docRef = db.collection('metadata').doc(docUid);
-    let urls = '';
-    await docRef
-      .get()
-      .then((doc) => {
-        console.log('Document from Firestore', doc.data());
-        urls = doc.data().imageUrl;
-      })
-      .catch((error) => {
-        console.log('No document exists');
-        setMessage('Firebase .get() failed for document ' + metadata.postUid);
-      });
-    console.log('Original image urls: ', urls);
-    const contentLinesArray = content.split('\n');
+    console.log('metadata postUid: ', metadata);
+    const uid = metadata.postUid;
+    const newPostContent = markdownFile.split('\n');
+    newPostContent.splice(0, 12);
+    // console.log('new post content', newPostContent);
+
+    // get post ID and get original post from postArray
+    let index = metadata.postId;
+
+    function findPostIndex(element) {
+      return element.postId === index;
+    }
+    index = postArray.findIndex(findPostIndex);
+    // console.log('index', index, postArray[index].imageUrl);
+
+    // find image lines and add in URLs
     let imageIndex = [];
-    for (let i = 0; i < contentLinesArray.length; i++) {
-      if (contentLinesArray[i][0] === '!') {
+    for (let i = 0; i < newPostContent.length; i++) {
+      if (newPostContent[i][0] === '!') {
         imageIndex.push(i);
       }
     }
-    console.log('imageIndex: ', imageIndex);
+    // console.log('imageIndex', imageIndex);
     for (let i = 0; i < imageIndex.length; i++) {
-      let newLine = contentLinesArray[imageIndex[i]].replace(
+      let newLine = newPostContent[imageIndex[i]].replace(
         ')',
-        urls[i] + ')'
+        postArray[index].imageUrl[i] + ')'
       );
-      contentLinesArray[imageIndex[i]] = newLine;
+      newPostContent[imageIndex[i]] = newLine;
+      // console.log('newLIne', newLine);
     }
-    let contentString = contentLinesArray.join('\n');
-    metadata.content = contentString;
+
+    // console.log('content w/ URLs', newPostContent);
+
+    // insert the imageName and imageUrl arrays into the metadata
+    metadata.imageName = postArray[index].imageName;
+    metadata.imageUrl = postArray[index].imageUrl;
+    // console.log(metadata.imageName, metadata.imageUrl);
+    const postObject = metadata;
+    let contentString = newPostContent.join('\n');
+    postObject.content = contentString;
     const storageRef = db.collection('metadata');
     storageRef
-      .doc(metadata.postUid)
-      .set(metadata)
+      .doc(uid)
+      .set(postObject)
       .catch((err) => {
         console.log(err);
         setMessage('Firebase save post error. ' + err);
       });
-    setMessage(metadata.postUid + ' text updated.');
+
+    setMData({
+      ...mData,
+      title: metadata.title,
+      date: metadata.date,
+    });
     setPostContent(contentString);
+    setMessage('New post saved/updated.');
   };
 
   return (
@@ -255,3 +273,51 @@ function Admin() {
 }
 
 export default Admin;
+
+// const updatePostTextHandler = async () => {
+//   setMessage('');
+//   setPostContent('');
+//   const { metadata, content } = parseMD(markdownFile);
+//   console.log('metadata postUid: ', metadata.postUid);
+//   let docUid = metadata.postUid;
+//   let docRef = db.collection('metadata').doc(docUid);
+//   let urls = [];
+//   await docRef
+//     .get()
+//     .then((doc) => {
+//       console.log('Document from Firestore', doc.data());
+//       urls = doc.data().imageUrl;
+//     })
+//     .catch((error) => {
+//       console.log('No document exists');
+//       setMessage('Firebase .get() failed for document ' + metadata.postUid);
+//     });
+//   console.log('Original image urls: ', urls);
+//   const contentLinesArray = content.split('\n');
+//   let imageIndex = [];
+//   for (let i = 0; i < contentLinesArray.length; i++) {
+//     if (contentLinesArray[i][0] === '!') {
+//       imageIndex.push(i);
+//     }
+//   }
+//   console.log('imageIndex: ', imageIndex);
+//   for (let i = 0; i < imageIndex.length; i++) {
+//     let newLine = contentLinesArray[imageIndex[i]].replace(
+//       ')',
+//       urls[i] + ')'
+//     );
+//     contentLinesArray[imageIndex[i]] = newLine;
+//   }
+//   let contentString = contentLinesArray.join('\n');
+//   metadata.content = contentString;
+//   const storageRef = db.collection('metadata');
+//   storageRef
+//     .doc(metadata.postUid)
+//     .set(metadata)
+//     .catch((err) => {
+//       console.log(err);
+//       setMessage('Firebase save post error. ' + err);
+//     });
+//   setMessage(metadata.postUid + ' text updated.');
+//   setPostContent(contentString);
+// }:

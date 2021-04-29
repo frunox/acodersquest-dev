@@ -12,32 +12,14 @@
   align-items: center;
 }
 
-.navbar-logo-background {
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 208, 0, 0.9) 70%,
-    rgba(255, 0, 0, 0)
-  );
-  height: 55px;
-  width: 55px;
-  margin-left: 0.5em;
-  display: flex;
-  align-items: center;
-  filter: blur(3px);
-  overflow: clip;
-  z-index: -1;
-}
-
 /* .navbar-logo-container {
   margin-left: 1em;
 } */
 
 .navbar-logo {
-  height: 55px;
+  height: 51px;
   width: auto;
-  margin: 0 2px;
-  padding-right: 2px;
+  margin: 5px 2px 0 2px;
 }
 
 .navbar-title {

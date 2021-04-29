@@ -1,13 +1,13 @@
 ---
-postUid: postUid12
-postId: 12
+postUid: postUid13
+postId: 13
 title: Launch Day! (Houston, We Still Have Some Problems)
 slug: acq-launch-day
 date: April 27, 2021
 author: john@acodersquest.com
 summary: It's time to go public!  Warts and all...
 keywords: general blog
-filename: 12_launch-day.md
+filename: 13_launch-day.md
 imageUrl: []
 imageName: []
 ---
