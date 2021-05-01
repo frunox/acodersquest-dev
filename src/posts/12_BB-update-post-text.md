@@ -41,10 +41,7 @@ const updatePostTextHandler = () => {
   // save the postId, to identify it in the array of posts
   let index = metadata.postId;
   // find the actual index of the post in the array, since the array was sorted
-  function findPostIndex(element) {
-    return element.postId === index;
-  }
-  index = postArray.findIndex(findPostIndex);
+  index = postArray.findIndex((el) => el.postId === index);
   // find the index of each line with a Markdown image element
   let imageIndex = [];
   for (let i = 0; i < newPostContent.length; i++) {
@@ -95,7 +92,7 @@ After the metadata is stripped from `markdownFile` and stored in `newPostContent
 
 Next, `newPostContent` (an array with each line in the post as an element) is iterated to find the index of each line that needs an image URL. Then, `newPostContent` is iterated again to replace the appropriate lines with image URLs. Then the image names and URLs need to be copied from the metadata in the original post into the metadata of the new post. These two properties are defined as empty arrays in the post file, so they need to be re-populated.
 
-Once those steps are complete, `postObject` is created by copying in the new metadata and appending the content. Then it is stored back into Firestore using the `uid` so the original document is over-written. From w\there it is brought back into the `postArray` the next time the app is refreshed.
+Once those steps are complete, `postObject` is created by copying in the new metadata and appending the content. Then it is stored back into Firestore using the `uid` so the original document is over-written. From there it is brought back into the `postArray` the next time the app is refreshed.
 
 > _I probably spend 90% of my time revising what I've written._
 >

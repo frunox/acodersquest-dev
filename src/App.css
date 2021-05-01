@@ -1,8 +1,17 @@
+:root {
+  --header-footer-background: rgb(76, 76, 76);
+  --yellow: rgb(241, 220, 25);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
 }
 
 h1,

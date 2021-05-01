@@ -148,11 +148,11 @@ function Admin() {
     // get post ID and get original post from postArray
     let index = metadata.postId;
 
-    function findPostIndex(element) {
-      return element.postId === index;
-    }
-    index = postArray.findIndex(findPostIndex);
-    // console.log('index', index, postArray[index].imageUrl);
+    // function findPostIndex(element) {
+    //   return element.postId === index;
+    // }
+    index = postArray.findIndex((el) => el.postId === index);
+    console.log('index', index, postArray[index].imageUrl);
 
     // find image lines and add in URLs
     let imageIndex = [];

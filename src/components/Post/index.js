@@ -14,7 +14,7 @@ function Post(props) {
 
   // let slug = parseInt(props.match.params.id);
   let slug = props.match.params.id;
-  console.log('Post slug', slug, typeof slug);
+  // console.log('Post slug', slug, typeof slug);
 
   // if (Object.is(NaN, id)) {
   //   console.log('Post redirect');
@@ -32,10 +32,7 @@ function Post(props) {
   // }
   // return <Redirect to="/all-posts" />;
 
-  function findPostId(element) {
-    return element.slug === slug;
-  }
-  let id = postArray.findIndex(findPostId);
+  let id = postArray.findIndex((el) => el.slug === slug);
   console.log('POST id after sort: ', id);
 
   return (

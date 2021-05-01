@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Confirm } from 'semantic-ui-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useHistory, Link } from 'react-router-dom';
-import './Profile.css';
+// import './Profile.css';
 
 export default function Profile() {
   console.log('wwwwwwwwwwww', useAuth);

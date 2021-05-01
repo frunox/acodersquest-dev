@@ -64,7 +64,9 @@ form button {
   text-align: left;
   margin-bottom: 1em;
   padding: 8px;
-  border: 1px solid rgba(172, 162, 206, 0.7);
+  background-color: white;
+  /* border: 1px solid rgba(172, 162, 206, 0.7); */
+  border-radius: 15px;
 }
 
 .post-card:hover {
@@ -132,7 +134,7 @@ form button {
 }
 
 .allposts-keyword {
-  background-color: rgba(255, 208, 0, 0.7);
+  background-color: var(--yellow);
   font-weight: 400;
   width: max-content;
   border-radius: 6px;
@@ -140,10 +142,16 @@ form button {
   margin: 0 1px;
 }
 
+.allposts-keyword-row button:hover {
+  color: white;
+  background-color: var(--header-footer-background);
+}
+
 .footer {
-  background-color: white;
+  background-color: var(--header-footer-background);
+  color: white;
   height: 55px;
-  border-top: 1px solid blue;
+  border-top: 3px solid blue;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -151,6 +159,7 @@ form button {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  font-size: 0.8rem;
 }
 
 .allposts-message {
@@ -164,7 +173,7 @@ form button {
 
   .content p {
     margin-bottom: 8px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   form button {
@@ -194,5 +203,9 @@ form button {
   .allposts-keyword {
     padding: 2px 4px;
     margin: 0 5px;
+  }
+
+  .footer {
+    font-size: 1rem;
   }
 }

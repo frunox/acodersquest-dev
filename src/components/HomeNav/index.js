@@ -13,7 +13,7 @@ const HomeNav = (props) => {
       <div>
         <img
           className="navbar-logo"
-          src="https://i.ibb.co/r04HX4G/logo-800x800.png"
+          src="https://i.ibb.co/VSMQDGW/logo2-800x800.png"
           alt="logo"
         ></img>
       </div>

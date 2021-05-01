@@ -1,8 +1,9 @@
 /* navigation styles start here */
 
 .navbar-header {
-  background: white;
-  border-bottom: 2px solid blue;
+  background: var(--header-footer-background);
+  color: white;
+  border-bottom: 3px solid blue;
   height: 55px;
   position: fixed;
   top: 0;
@@ -17,9 +18,10 @@
 } */
 
 .navbar-logo {
-  height: 51px;
+  height: 53px;
   width: auto;
-  margin: 5px 2px 0 2px;
+  margin: 5px 2px 0 4px;
+  background: transparent;
 }
 
 .navbar-title {
@@ -29,7 +31,7 @@
 }
 
 .navbar-title a {
-  color: black;
+  color: white;
   text-decoration: none;
   font-size: 1.3em;
   margin-left: 1em;
@@ -60,6 +62,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  color: white;
   margin-right: 1em;
   height: 100%;
   display: flex;
@@ -71,7 +74,7 @@
 .navbar-toggle-label span::before,
 .navbar-toggle-label span::after {
   display: block;
-  background: black;
+  background: white;
   height: 2px;
   width: 2em;
   border-radius: 2px;
@@ -131,7 +134,7 @@
 }
 
 .navbar-nav a:hover {
-  color: lightgray;
+  color: rgb(255, 208, 0);
 }
 
 .navbar-toggle:checked ~ nav {
@@ -166,12 +169,12 @@
   }
 
   .navbar-nav a {
-    color: black;
+    color: white;
     opacity: 1;
   }
 
   .navbar-nav a:hover {
-    color: lightgray;
+    color: rgb(255, 208, 0);
   }
 
   .navbar-nav ul {

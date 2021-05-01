@@ -3,7 +3,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useModal } from '../../../contexts/ModalContext';
 import { useHistory, Link } from 'react-router-dom';
 import ErrorModal from '../../ErrorModal/ErrorModal';
-import './Signup.css';
+// import './Signup.css';
 
 const Signup = () => {
   // const displaynameRef = useRef()
