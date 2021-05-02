@@ -1,11 +1,12 @@
 .post-content {
-  z-index: 10;
   background-color: white;
   position: relative;
-  top: 62px;
+  top: 65px;
   width: 96%;
   margin: auto;
-  padding: 0 1rem;
+  margin-bottom: 85px;
+  border-radius: 15px;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .post-content h1 {
@@ -71,10 +72,24 @@
   margin-bottom: 1rem;
 }
 
+.footer {
+  background-color: var(--header-footer-background);
+  color: white;
+  height: 55px;
+  border-top: 3px solid blue;
+  /* position: sticky;
+  bottom: 0; */
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 0.8rem;
+}
+
 @media screen and (min-width: 800px) {
   .post-content {
     width: 70%;
-    margin: auto;
   }
 
   .post-content h1 {

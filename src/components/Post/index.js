@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import HomeNav from '../HomeNav';
+import Footer from '../Footer';
 
 import { usePosts } from '../../contexts/PostContext';
 
-import HomeNav from '../HomeNav';
 import '../postContent.css';
 
 function Post(props) {
@@ -52,6 +53,7 @@ function Post(props) {
           <a href="mailto:john@acodersquest.com">john@acodersquest.com.</a>
         </p>
       </div>
+      <Footer />
     </React.Fragment>
   );
 }

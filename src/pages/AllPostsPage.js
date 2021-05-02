@@ -5,11 +5,15 @@ import Footer from '../components/Footer';
 
 function AllPostsPage() {
   return (
-    <div>
-      <HomeNav />
-      <AllPosts />
-      <Footer />
-    </div>
+    <>
+      <section>
+        <HomeNav />
+        <main>
+          <AllPosts />
+        </main>
+        <Footer />
+      </section>
+    </>
   );
 }
 

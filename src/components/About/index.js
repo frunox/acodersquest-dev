@@ -46,7 +46,7 @@ function About() {
         <a href="mailto:john@acodersquest.com">email</a>.
       </p>
       <p> </p>
-      <ReactMarkdown linkTarget={'_blank_'}>{content}</ReactMarkdown>
+      {/* <ReactMarkdown linkTarget={'_blank_'}>{content}</ReactMarkdown> */}
     </div>
   );
 }

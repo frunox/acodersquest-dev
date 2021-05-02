@@ -2,14 +2,19 @@ import React from 'react';
 import HomeNav from '../components/HomeNav';
 import About from '../components/About';
 import Footer from '../components/Footer';
+import '../components/components.css';
 
 function AboutPage() {
   return (
-    <div>
-      <HomeNav />
-      <About />
-      <Footer />
-    </div>
+    <>
+      <section>
+        <HomeNav />
+        <main>
+          <About />
+        </main>
+        <Footer />
+      </section>
+    </>
   );
 }
 

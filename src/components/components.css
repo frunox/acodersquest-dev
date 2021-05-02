@@ -1,9 +1,21 @@
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  min-height: 100%;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
 .content {
   position: relative;
   top: 65px;
   width: 96%;
   margin: auto;
-  margin-bottom: 130px;
+  margin-bottom: 85px;
 }
 
 .content h1 {
@@ -153,8 +165,8 @@ form button {
   color: white;
   height: 55px;
   border-top: 3px solid blue;
-  position: fixed;
-  bottom: 0;
+  /* position: sticky;
+  bottom: 0; */
   width: 100%;
   z-index: 99;
   display: flex;
