@@ -1,18 +1,18 @@
 ---
 postUid: postUid14
 postId: 14
-title: Favicons, SEO and How Your Site Looks on LinkedIn
+title: Favicons, SEO and How Your Site Looks in LinkedIn Posts
 slug: acq-favicons-seo-linkedin
 date: April 29, 2021
 author: john@acodersquest.com
-summary: When I announced my blog on LinkedIn, it didn't look so good.  I needed to learn about favicons and SEO...
+summary: When I announced my blog on LinkedIn, it didn't look so good.  I needed to learn about favicons, Open Graph and SEO...
 keywords: react blog seo favicon linkedin
 filename: 14_favicons-seo-linkedin.md
 imageUrl: []
 imageName: []
 ---
 
-When I created the post on LinkedIn to announce my blog, LinkedIn creates a preview with the site name, a bit of text, and an image (at least if you've set up your project properly). My preview didn't have an image, and the text shown beneath the title was "Web site created using create-react-app". In other words, it didn't look professional. I was able to find a [resource](https://kinsta.com/blog/linkedin-debugger/) that helped me improve the look. I also realized I needed a 'favicon' to individualize my site.
+When I created the post on LinkedIn to announce my blog, I added the link and, LinkedIn created a preview with the site name, a bit of text, and an image (at least if you've set up your project properly). My preview didn't have an image, and the text shown beneath the title was "Web site created using create-react-app". In other words, it didn't look professional. I was able to find a [resource](https://kinsta.com/blog/linkedin-debugger/) that helped me improve the look. I also realized I needed a 'favicon' to individualize my site.
 
 ## What's a Favicon
 
@@ -20,21 +20,25 @@ When you start a new React project and run it, you'll see in the browser tab a b
 
 ![create react app icon]()
 
-This is the React logo. Every web site you view will show an icon in the browser tab next to the title. These are 'favicons', short for favorite icons. Favicons are small images used in various ways in browsers, as explained [here](https://www.seoptimer.com/blog/what-is-a-favicon/). They are also useful for search engine optimization (SEO). Note that the favicon file holds several versions of the logo at different resolutions.
+This is the React logo. Every web site you view will show an icon in the browser tab next to the title. These are 'favicons', short for favorite icons. Favicons are small images used in various ways in browsers, as explained [here](https://www.seoptimer.com/blog/what-is-a-favicon/). They are also useful for search engine optimization (SEO). Note that the favicon file holds several versions of the logo at different resolutions, used for different situations.
 
-Look in the _/public_ folder of a React app, and you'll see a file _favicon.ico_, which has several icon images in different resolutions, in Microsoft Windows icon format. The icon seen in the browser tab comes from this file.
+Look in the _/public_ folder of a React app, and you'll see a file _favicon.ico_. The file is in the Microsoft Windows icon format. The icon seen in the browser tab comes from this file.
+
+> _"Image is powerful, but image is also superficial."_
+>
+> Cameron Russell
 
 ## Create Your Own Favicon
 
 First, you need to create a logo. There are many ways to do this using various photo editing apps, or you can have someone design and make one for you. I created mine using [GIMP](https://www.gimp.org), a free image creation and editing app. GIMP can save images to the _.ico_ format, which many low end apps can't, so I was able to [create](http://thenewcode.com/467/Creating-Multi-Resolution-Favicons-For-Web-Pages-With-GIMP) the favicon file myself.
 
-Fortunately, there are simpler ways to create a favicon file. I tried [icoconverter.com](https://www.icoconverter.com) and it worked well. Just upload your high-resolution image, select the favicon resolutions you want (selecting all of them is OK), and use a bit depth of 32 bits. It creates a _favicon.ico_ for you to download. Just replace the React default favicon file with your new one in the _/public_ folder.
+Fortunately, there are simpler ways to create a favicon file. I tried [icoconverter.com](https://www.icoconverter.com) and it worked well. Just upload your high-resolution logo image, select the favicon resolutions you want (selecting all of them is OK), and use a bit depth of 32 bits. It creates a _favicon.ico_ for you to download. Just replace the React default favicon file with your new one in the _/public_ folder. Your icon should appear when the site is refreshed.
 
-## Improving the Look in LinkedIn
+## Improving the Link Preview in LinkedIn
 
-Adding a favicon using my logo made the blog look better in the browser, but it didn't improve the look of the LinkedIn preview. There are a few more steps to take.
+Adding a favicon using my logo made the blog look better in the browser, but it didn't improve the look of the LinkedIn preview. A few more steps were needed.
 
-LinkedIn, and other sites like Facebook, use the [Open Graph protocol](https://ogp.me/) to display a preview of a web link. This works by using `<meta>` tags in the `index.html` file in a React app (or any `.html` file, for that matter). This blog [post](https://ahrefs.com/blog/open-graph-meta-tags/) explains how Open Graph is used and what it means for SEO.
+LinkedIn, and other sites like Facebook, uses the [Open Graph protocol](https://ogp.me/) to display a preview of a web link. This works by using `<meta>` tags in the `index.html` file in a React app (or any `.html` file, for that matter). This blog [post](https://ahrefs.com/blog/open-graph-meta-tags/) explains how Open Graph is used and what it means for SEO.
 
 The default `index.html` file in a React app includes this `<meta>` tags:
 
@@ -66,7 +70,9 @@ My preview still lacked an image. I added a new tag:
 />
 ```
 
-Now my logo appeared in the preview.
+Now my logo appeared in the preview, like this:
+
+![linked link preview]()
 
 ## Other Open Graph Properties to Use
 
@@ -91,11 +97,11 @@ LinkedIn looks for ('scrapes') for these Open Graph tags as explained [here](htt
 
 Only the title and image information is shown in the preview, however.
 
-Don't remove the `<title>' tag in `index.html`. That is still used in the browser tab.
+Don't remove the `<title>` tag in `index.html`. That is still used in the browser tab. Update it to include the content in the `<meta>` description tag.
 
 ## Checking How Your LinkedIn Preview Will Look
 
-LinkedIn has a tool, the [Post Inspector](https://www.linkedin.com/post-inspector/) that will show what the link preview will look like. It will also show which Open Graph properties is can and can't find, so you can add what you need.
+LinkedIn has a tool, the [Post Inspector](https://www.linkedin.com/post-inspector/) that will show what the link preview will look like. It will also show which Open Graph properties it can and can't find, so you can add what you need.
 
 ## What Does This Have to Do with SEO?
 
